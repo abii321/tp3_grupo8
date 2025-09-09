@@ -87,7 +87,7 @@ public class Ejercicio3 {
             }
         }
     }
-
+//<3
     private static LocalDate leerFecha(Scanner sc) {
         while (true) {
             String line = sc.nextLine().trim();
@@ -99,3 +99,4 @@ public class Ejercicio3 {
         }
     }
 }
+
