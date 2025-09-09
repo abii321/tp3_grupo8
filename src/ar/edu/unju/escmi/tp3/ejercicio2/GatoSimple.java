@@ -31,6 +31,7 @@ public class GatoSimple {
 
     public void comer(String comida) {
         if (comida.equalsIgnoreCase("pescado")) {
+            // funcionalidad extra que agregamos para mayor interactividad que se usa en la funcion de pelea
             energia += 20;
             if (energia > 100) energia = 100; // límite máximo
             System.out.println(nombre + ": ¡Qué rico! Ahora tengo " + energia + " de energía.");
@@ -50,7 +51,7 @@ public class GatoSimple {
             return;
         }
 
-        // Sistema de probabilidades
+        // Sistema de probabilidades - funcionalidad extra que agregamos para mayor interactividad
         Random random = new Random();
         int probabilidad = random.nextInt(this.energia + gatoContrincante.energia);
 
