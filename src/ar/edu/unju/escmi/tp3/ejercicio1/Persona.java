@@ -4,16 +4,15 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Persona {
-    private String dni;
+    private int dni;
     private String nombre;
     private LocalDate fechaNacimiento;
     private String domicilio;
     private String provincia;
 
-    public Persona() {
-    }
+    public Persona() { }
 
-    public Persona(String dni, String nombre, LocalDate fechaNacimiento, String domicilio, String provincia) {
+    public Persona(int dni, String nombre, LocalDate fechaNacimiento, String domicilio, String provincia) {
         this.dni = dni;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -21,16 +20,15 @@ public class Persona {
         this.provincia = provincia;
     }
 
-
-    public Persona(String dni, String nombre, LocalDate fechaNacimiento) {
+    public Persona(int dni, String nombre, LocalDate fechaNacimiento) {
         this.dni = dni;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.provincia = "Jujuy";
     }
 
-    public String getDni() { return dni; }
-    public void setDni(String dni) { this.dni = dni; }
+    public int getDni() { return dni; }
+    public void setDni(int dni) { this.dni = dni; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
@@ -45,9 +43,7 @@ public class Persona {
     public void setProvincia(String provincia) { this.provincia = provincia; }
 
     public int calcularEdad() {
-        if (fechaNacimiento == null) {
-            return 0;
-        }
+        if (fechaNacimiento == null) return 0;
         return Period.between(fechaNacimiento, LocalDate.now()).getYears();
     }
 
@@ -55,13 +51,18 @@ public class Persona {
         return calcularEdad() >= 18;
     }
 
+    @Override
+    public String toString() {
+        return "DNI: " + dni +
+                "\nNombre: " + nombre +
+                "\nFecha de nacimiento: " + fechaNacimiento +
+                "\nDomicilio: " + domicilio +
+                "\nProvincia: " + provincia +
+                "\nEdad: " + calcularEdad();
+    }
+
     public void mostrarDatos() {
-        System.out.println("DNI: " + dni);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Fecha de nacimiento: " + fechaNacimiento);
-        System.out.println("Domicilio: " + domicilio);
-        System.out.println("Provincia: " + provincia);
-        System.out.println("Edad: " + calcularEdad());
+        System.out.println(this.toString());
         if (esMayorDeEdad()) {
             System.out.println("La persona es mayor de edad");
         } else {
