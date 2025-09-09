@@ -42,7 +42,7 @@ public class Ejercicio3 {
             opcion = leerEntero(sc);
 
             switch (opcion) {
-                case 1:
+                case 1: {
                     System.out.print("Nombre: ");
                     String nombre = sc.nextLine().trim();
                     System.out.print("Legajo: ");
@@ -52,8 +52,8 @@ public class Ejercicio3 {
                     empleado = new Empleado(nombre, legajo, salario);
                     System.out.println(">> Empleado creado.");
                     break;
-
-                case 2:
+                }
+                case 2:{
                     if (empleado == null) {
                         System.out.println("Primero debe crear un empleado.");
                     } else {
@@ -67,8 +67,8 @@ public class Ejercicio3 {
                         }
                     }
                     break;
-
-                case 3:
+                }
+                case 3:{
                     if (empleado == null) {
                         System.out.println("No hay empleado cargado.");
                     } else {
@@ -76,14 +76,9 @@ public class Ejercicio3 {
                         System.out.println(empleado);
                     }
                     break;
-
-                case 4:
-                    System.out.println("Saliendo...");
-                    break;
-
-                default:
-                    System.out.println("Opción inválida.");
-                    break;
+                }
+                case 4: System.out.println("Saliendo..."); break;
+                default: System.out.println("Opción inválida."); break;
             }
         } while (opcion != 4);
 
