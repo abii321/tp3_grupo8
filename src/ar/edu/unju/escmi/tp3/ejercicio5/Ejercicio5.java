@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Ejercicio5 {
 
-    // Método de búsqueda por código
-    public static int buscarCodigo(int cantidad, int codigo, Producto arregloProductos[]) {
+    // Método de búsqueda por código (ahora String)
+    public static int buscarCodigo(int cantidad, String codigo, Producto arregloProductos[]) {
         for (int j = 0; j < cantidad; j++) {
-            if (arregloProductos[j].getCodigo() == codigo) return j;
+            if (arregloProductos[j].getCodigo().equals(codigo)) return j;
         }
         return -1;
     }
@@ -36,23 +36,19 @@ public class Ejercicio5 {
 
             switch (opcion) {
                 case 1: {
-                    if (cantidad > 2) System.out.println("No hay espacio para agregar otro producto");
-                    else {
-                        int codigo;
-                        String descripcion;
-                        double precio;
+                    if (cantidad > 2) {
+                        System.out.println("No hay espacio para agregar otro producto");
+                    } else {
+                        Producto p = new Producto(); // primero creamos el producto
 
                         System.out.print("Ingrese código: ");
-                        codigo = sc.nextInt(); sc.nextLine();
-                        System.out.print("Ingrese descripción: ");
-                        descripcion = sc.nextLine();
-                        System.out.print("Ingrese precio: ");
-                        precio = sc.nextDouble(); sc.nextLine();
+                        p.setCodigo(sc.nextLine());
 
-                        Producto p = new Producto(); // constructor por defecto
-                        p.setCodigo(codigo);
-                        p.setDescripcion(descripcion);
-                        p.setPrecio(precio);
+                        System.out.print("Ingrese descripción: ");
+                        p.setDescripcion(sc.nextLine());
+
+                        System.out.print("Ingrese precio: ");
+                        p.setPrecio(sc.nextDouble()); sc.nextLine();
 
                         arregloProductos[cantidad] = p;
                         System.out.println("Producto agregado con éxito");
@@ -63,8 +59,9 @@ public class Ejercicio5 {
                 }
 
                 case 2: {
-                    if (cantidad == 0) System.out.println("No hay productos para mostrar");
-                    else {
+                    if (cantidad == 0) {
+                        System.out.println("No hay productos para mostrar");
+                    } else {
                         for (int j = 0; j < cantidad; j++)
                             System.out.println(arregloProductos[j].toString());
                     }
@@ -73,9 +70,8 @@ public class Ejercicio5 {
                 }
 
                 case 3: {
-                    int codigo;
                     System.out.print("Ingrese código del producto a modificar: ");
-                    codigo = sc.nextInt(); sc.nextLine();
+                    String codigo = sc.nextLine();
 
                     int indice = buscarCodigo(cantidad, codigo, arregloProductos);
                     if (indice == -1) {

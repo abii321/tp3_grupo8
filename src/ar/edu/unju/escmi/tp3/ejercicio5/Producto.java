@@ -1,7 +1,7 @@
 package ar.edu.unju.escmi.tp3.ejercicio5;
 
 public class Producto {
-    private int codigo;
+    private String codigo;
     private String descripcion;
     private double precio;
 
@@ -10,11 +10,11 @@ public class Producto {
     }
 
     // Métodos accesores (getters y setters)
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
