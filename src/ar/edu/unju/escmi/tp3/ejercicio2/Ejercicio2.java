@@ -14,8 +14,9 @@ public class Ejercicio2 {
             System.out.println("1 – Crear gato simple");
             System.out.println("2 – Dar de comer a un gato simple");
             System.out.println("3 – Mostrar todos los gatos");
-            System.out.println("4 – Crear gato contrincante para pelear");
-            System.out.println("5 – Salir");
+            System.out.println("4 – Crear gato contrincante");
+            System.out.println("5 – Pelear");
+            System.out.println("6 – Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // limpiar buffer
@@ -51,7 +52,7 @@ public class Ejercicio2 {
                 case 3:
                     if (gato != null) {
                         System.out.println("\n🐾 Gato Simple:");
-                        gato.mostrarDatos();
+                        System.out.println(gato);
                         gato.maullar();
                         gato.ronronear();
                     } else {
@@ -59,13 +60,14 @@ public class Ejercicio2 {
                     }
                     if (gatoContrincante != null) {
                         System.out.println("\n🐾 Gato Contrincante:");
-                        gatoContrincante.mostrarDatos();
+                        System.out.println(gatoContrincante);
                         gatoContrincante.maullar();
                         gatoContrincante.ronronear();
                     } else {
                         System.out.println("No hay gato contrincante creado.");
                     }
                     break;
+
                 case 4:
                     if (gato != null) {
                         System.out.print("Nombre del contrincante: ");
@@ -82,20 +84,27 @@ public class Ejercicio2 {
                         System.out.print("Sexo (macho/hembra): ");
                         String sexoC = scanner.nextLine();
                         gatoContrincante = new GatoSimple(colorC, pesoC, razaC, edadC, nombreC, sexoC);
-                        gato.pelear(gatoContrincante);
                     } else {
                         System.out.println("Primero debe crear un gato.");
                     }
                     break;
 
                 case 5:
+                    if (gato != null && gatoContrincante != null) {
+                        gato.pelear(gatoContrincante);
+                    } else {
+                        System.out.println("Debe crear ambos gatos antes de pelear.");
+                    }
+                    break;
+
+                case 6:
                     System.out.println("¡Hasta luego!");
                     break;
 
                 default:
                     System.out.println("Opción inválida.");
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
 
         scanner.close();
     }
